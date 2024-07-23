@@ -1,4 +1,6 @@
 # idea & target folder
 .idea/
-target/
-*.class
+target/test-classes
+target/classes
+target/generated-sources
+target/generated-test-sources
