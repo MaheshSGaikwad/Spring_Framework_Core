@@ -1,18 +1,21 @@
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 public class ShoppingCartApplication {
     public static void main(String [] arg){
-        /*
-        ShoppingCart cart = new ShoppingCart();
-        cart.checkOut(10.10);
-         */
-
         /**
-          By making the loosely coupled code, we can choose the whichever payment processor as per client requirement.
+         * In the Spring, dependency are injected by using xml file configuration or Java config class.
          */
-        ShoppingCart cart1 = new ShoppingCart(new PhonePayPaymentProcessor());
-        cart1.checkOut(10.10);
+        System.out.println("Constructor Injection using XML file(beans.xml) ");
+        ApplicationContext xmlApplicationContext = new ClassPathXmlApplicationContext("beans.xml");
+        ShoppingCart shoppingCart1 = xmlApplicationContext.getBean("shoppingCart",ShoppingCart.class);
+        shoppingCart1.checkOut(10.10);
         System.out.println();
 
-        ShoppingCart cart2 = new ShoppingCart(new GPayPaymentProcessor());
-        cart2.checkOut(10.10);
+        System.out.println("Constructor Injection using Java Config file(AppConfig.java) ");
+        ApplicationContext configApplicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        ShoppingCart shoppingCart2 = configApplicationContext.getBean("shoppingCart",ShoppingCart.class);
+        shoppingCart2.checkOut(10.10);
     }
 }

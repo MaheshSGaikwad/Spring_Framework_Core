@@ -4,3 +4,6 @@ target/test-classes
 target/classes
 target/generated-sources
 target/generated-test-sources
+
+# class files
+*.class
