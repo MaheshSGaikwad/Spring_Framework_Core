@@ -17,6 +17,10 @@ public class AppConfig {
     }
     @Bean("shoppingCart")
     public ShoppingCart createShoppingCart(){
-        return new ShoppingCart(createGPayPaymentProcessor());
+       // return new ShoppingCart(createGPayPaymentProcessor());
+        // Here dependency is provided through setter method(setPaymentProcessor())
+        ShoppingCart cart = new ShoppingCart();
+        cart.setPaymentProcessor(createGPayPaymentProcessor());
+        return cart;
     }
 }

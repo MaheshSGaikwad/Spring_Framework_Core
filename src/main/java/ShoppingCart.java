@@ -8,12 +8,21 @@ public class ShoppingCart {
      */
     private IPaymentProcessor paymentProcessor;
 
+    ShoppingCart(){
+    }
+
+    public IPaymentProcessor getPaymentProcessor() {
+        return paymentProcessor;
+    }
+
     /**
-      This is the constructor injection where the required dependency passed as argument to the constructor.
+     * This is the setter injection where dependency is provided through setter method.
+     * @param paymentProcessor
      */
-    ShoppingCart(IPaymentProcessor paymentProcessor){
+    public void setPaymentProcessor(IPaymentProcessor paymentProcessor) {
         this.paymentProcessor = paymentProcessor;
     }
+
     void checkOut(Double amount){
         paymentProcessor.proceedPayment(amount);
     }
