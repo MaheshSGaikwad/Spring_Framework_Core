@@ -7,3 +7,4 @@ target/generated-test-sources
 
 # class files
 *.class
+target
